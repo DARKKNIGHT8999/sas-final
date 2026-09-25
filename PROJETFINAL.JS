@@ -76,4 +76,24 @@ for(let i=0;i<candidats.length;i++){
     }
 }  
 }
-
+function modifier(){
+    let cin=prompt("cin a modifier: ");
+    for (let i=0;i<candidats.length;i++){
+        if(candidats[i].cin==cin){
+            candidats[i].partipolitique=prompt("nouveau parti: ");
+            candidats[i].age=Number(prompt("nouveau age: "));
+            console.log("modifie!");
+            return;
+        }
+    }
+}
+function supprimer(){
+let cin=prompt("cina supprimer: ");
+for (let i=0; n<candidats.length;i++){
+    if(candidats[i].cin==cin){
+        candidats.splice(i,1);
+        console.log("supprime!");
+        return;
+    }
+}    
+}
