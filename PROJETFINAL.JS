@@ -24,3 +24,15 @@ console.log("candidat ajoute!");
 }
 ajouteruncandidat();
 console.log(candidats);
+
+
+function ajouterplusieurs(){
+let n=Number(prompt("combien de candidats?"));
+for(let i=0;i<n;i++){
+    console.log("candidat" + (i+1) + " ");
+
+}    
+}
+ajouterplusieurs();
+console.log(candidats);
+
