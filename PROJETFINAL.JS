@@ -1,5 +1,52 @@
 var prompt=require('prompt-sync')();
-let candidats=[];
+const candidats=[{
+	cin : "AB123456",
+	nom : "Boushaba",
+	prenom : "Soufiane",
+	partiPolitique : "Indépendant",
+	age: 40,
+	electeurs: []
+},
+{
+	cin : "CD7890",
+	nom : "ALAMI",
+	prenom : "SARA",
+	partiPolitique : "WOMEN",
+	age: 32,
+	electeurs: [zs253614]
+},
+{
+	cin : "EF112233",
+	nom : "EL AMRANI",
+	prenom : "YOUSSEF",
+	partiPolitique : "Indépendant",
+	age: 35,
+	electeurs: []
+},
+{
+	cin : "GH885566",
+	nom : "BENALI",
+	prenom : "FATIMA",
+	partiPolitique : "Indépendant",
+	age: 60,
+	electeurs: []
+},
+{
+	cin : "ij778899",
+	nom : "HOUSSAM",
+	prenom : "FASSA",
+	partiPolitique : "Wisdom",
+	age: 20,
+	electeurs: [AB123456,EF112233,GH885566]
+},
+{
+	cin : "zs253614",
+	nom : "MANSOURI",
+	prenom : "HICHAM",
+	partiPolitique : "Indépendant",
+	age: 70,
+	electeurs: []
+}];
 function ajouteruncandidat(){
 let cin=prompt("cin du candidat: ");
 for(let i=0;i<candidats.length;i++){
@@ -96,4 +143,12 @@ for (let i=0; n<candidats.length;i++){
         return;
     }
 }    
+}
+function rechercher(){
+let nom=prompt("nom a chercher: ");
+for(i=0;i<candidats.length;i++){
+if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
+    console.log(candidats[i]);
+}
+}
 }
