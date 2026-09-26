@@ -3,7 +3,7 @@ const candidats=[{
 	cin : "AB123456",
 	nom : "Boushaba",
 	prenom : "Soufiane",
-	partiPolitique : "Indépendant",
+	partipolitique : "Indépendant",
 	age: 40,
 	electeurs: []
 },
@@ -11,15 +11,15 @@ const candidats=[{
 	cin : "CD7890",
 	nom : "ALAMI",
 	prenom : "SARA",
-	partiPolitique : "WOMEN",
+	partipolitique : "WOMEN",
 	age: 32,
-	electeurs: [zs253614]
+	electeurs: ["lm51476"]
 },
 {
 	cin : "EF112233",
 	nom : "EL AMRANI",
 	prenom : "YOUSSEF",
-	partiPolitique : "Indépendant",
+	partipolitique : "Indépendant",
 	age: 35,
 	electeurs: []
 },
@@ -27,7 +27,7 @@ const candidats=[{
 	cin : "GH885566",
 	nom : "BENALI",
 	prenom : "FATIMA",
-	partiPolitique : "Indépendant",
+	partipolitique : "Indépendant",
 	age: 60,
 	electeurs: []
 },
@@ -35,16 +35,16 @@ const candidats=[{
 	cin : "ij778899",
 	nom : "HOUSSAM",
 	prenom : "FASSA",
-	partiPolitique : "Wisdom",
+	partipolitique : "wisdom",
 	age: 20,
-	electeurs: [AB123456,EF112233,GH885566]
+	electeurs: ["AB123456","EF112233","GH885566"]
 },
 {
-	cin : "zs253614",
-	nom : "MANSOURI",
-	prenom : "HICHAM",
-	partiPolitique : "Indépendant",
-	age: 70,
+	cin : "lm51476",
+	nom : "saad",
+	prenom : "oussama",
+	partipolitique : "Indépendant",
+	age: 25,
 	electeurs: []
 }];
 function ajouteruncandidat(){
@@ -57,7 +57,7 @@ return;
 }
 let nom=prompt("nom: ");
 let prenom=prompt("prenom: ");
-let parti=prompt("parti plitique: ");
+let parti=prompt("parti politique: ");
 let age=Number(prompt("age: "));
 candidats.push({
     cin:cin,
@@ -95,18 +95,18 @@ let box=candidats[j];
     }    
     }
 }
-let filtre=" ";
-if(choix=="3")filtre=prompt("donner le parti");
+let filtre="";
+if(choix=="3")filtre=prompt("donner le parti: ");
 for (let i=0;i<candidats.length;i++){
     if(choix=="3"&&candidats[i].partipolitique!=filtre){
    continue;
     }
-console.log(candidats[i].nom + "parti: " + candidats[i].partipolitique+"votes: "+ candidats[i].electeurs.length);     
+console.log(candidats[i].nom + "|parti: " + candidats[i].partipolitique+"|votes: "+ candidats[i].electeurs.length);     
 }
 }
 function voter(){
 let cinelecteur=prompt("voter cin(electeur): ");
-for(let i = 0;i<candidants.length;i++){
+for(let i = 0;i<candidats.length;i++){
     for(let j=0;j<candidats[i].electeurs.length;j++){
     if(candidats[i].electeurs[j]==cinelecteur){
         console.log("vous avez deja vote et vous n'avez pasle droitde modifier votre vote ni de voter a nouveau");
@@ -135,8 +135,8 @@ function modifier(){
     }
 }
 function supprimer(){
-let cin=prompt("cina supprimer: ");
-for (let i=0; n<candidats.length;i++){
+let cin=prompt("cin supprimer: ");
+for (let i=0; i<candidats.length;i++){
     if(candidats[i].cin==cin){
         candidats.splice(i,1);
         console.log("supprime!");
@@ -155,8 +155,43 @@ if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
 function statistique(){
     console.log("total candidat: " + candidats.length);
     let totalvotes=0;
-    for (let i=0;i<candidant.length;i++){
+    for (let i=0;i<candidats.length;i++){
         totalvotes=totalvotes+candidats[i].electeurs.length;
-        console.log("totalvotes: " + totalvotes);
+    }
+    console.log("totalvotes: " + totalvotes);
+}
+while(true){
+    console.log("1.ajouter 2.plusieurs 3.afficher 4.voter 5.modifier 6.supprimer 7.rechercher 8.stats 9.quitter");
+    let choix=prompt("choix: ");
+    switch(choix){
+        case "1":
+            ajouteruncandidat();
+        break;
+        case "2":
+            ajouterplusieurs();
+        break;
+        case "3":
+            afficher();
+        break;
+        case "4":
+            voter();
+        break;
+        case "5":
+            modifier();
+        break;
+        case "6":
+            supprimer();
+        break;
+        case "7":
+            rechercher();
+        break;
+        case "8":
+            statistique();
+        break;
+        case "9":
+        break;                    
+    }
+    if (choix=="9"){
+        break;
     }
 }
