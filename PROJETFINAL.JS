@@ -152,3 +152,11 @@ if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
 }
 }
 }
+function statistique(){
+    console.log("total candidat: " + candidats.length);
+    let totalvotes=0;
+    for (let i=0;i<candidant.length;i++){
+        totalvotes=totalvotes+candidats[i].electeurs.length;
+        console.log("totalvotes: " + totalvotes);
+    }
+}
