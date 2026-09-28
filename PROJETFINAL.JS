@@ -13,7 +13,7 @@ const candidats=[{
 	prenom : "SARA",
 	partipolitique : "WOMEN",
 	age: 32,
-	electeurs: ["lm51476"]
+	electeurs: ["lm51476","8r223344"]
 },
 {
 	cin : "EF112233",
@@ -37,14 +37,54 @@ const candidats=[{
 	prenom : "FASSA",
 	partipolitique : "wisdom",
 	age: 20,
-	electeurs: ["AB123456","EF112233","GH885566"]
+	electeurs: ["AB123456","EF112233","GH885566","7q559911","9u005599"]
 },
 {
-	cin : "lm51476",
-	nom : "saad",
-	prenom : "oussama",
+	cin : "3l542864",
+	nom : "alamp",
+	prenom : "yassine",
+	partipolitique : "pdj",
+	age: 28,
+	electeurs: ["4m112233","5n556677","6p556688"]
+},
+{
+	cin : "4m112233",
+	nom : "benani",
+	prenom : "sara",
 	partipolitique : "Indépendant",
-	age: 25,
+	age: 26,
+	electeurs: []
+},
+{
+	cin : "5n556677",
+	nom : "idrissi",
+	prenom : "mehdi",
+	partipolitique : "Indépendant",
+	age: 33,
+	electeurs: []
+},
+{
+	cin : "6p556688",
+	nom : "elamrani",
+	prenom : "fatim",
+	partipolitique : "Indépendant",
+	age: 47,
+	electeurs: []
+},
+{
+	cin : "7q559911",
+	nom : "tahr",
+	prenom : "omar",
+	partipolitique : "Indépendant",
+	age: 61,
+	electeurs: []
+},
+{
+	cin : "9u005599",
+	nom : "khalfi",
+	prenom : "nada",
+	partipolitique : "Indépendant",
+	age: 29,
 	electeurs: []
 }];
 function ajouteruncandidat(){
@@ -101,7 +141,7 @@ for (let i=0;i<candidats.length;i++){
     if(choix=="3"&&candidats[i].partipolitique!=filtre){
    continue;
     }
-console.log(candidats[i].nom + "|parti: " + candidats[i].partipolitique+"|votes: "+ candidats[i].electeurs.length);     
+console.log(candidats[i].cin + " |" + candidats[i].nom + " " + candidats[i].prenom + " |age: " + candidats[i].age + " | parti: " + candidats[i].partipolitique +"|votes: "+ candidats[i].electeurs.length);               
 }
 }
 function voter(){
@@ -109,7 +149,7 @@ let cinelecteur=prompt("voter cin(electeur): ");
 for(let i = 0;i<candidats.length;i++){
     for(let j=0;j<candidats[i].electeurs.length;j++){
     if(candidats[i].electeurs[j]==cinelecteur){
-        console.log("vous avez deja vote et vous n'avez pasle droitde modifier votre vote ni de voter a nouveau");
+        console.log("vous avez deja vote et vous n'avez pasle droitn de modifier votre vote ni de voter a nouveau");
         return;
     }    
     }
@@ -146,7 +186,7 @@ for (let i=0; i<candidats.length;i++){
 }
 function rechercher(){
 let nom=prompt("nom a chercher: ");
-for(i=0;i<candidats.length;i++){
+for(let i=0;i<candidats.length;i++){
 if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
     console.log(candidats[i]);
 }
