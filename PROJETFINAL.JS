@@ -17,7 +17,7 @@ const candidats=[{
 },
 {
 	cin : "EF112233",
-	nom : "EL AMRANI",
+	nom : "JAMAL",
 	prenom : "YOUSSEF",
 	partipolitique : "Indépendant",
 	age: 35,
@@ -25,7 +25,7 @@ const candidats=[{
 },
 {
 	cin : "GH885566",
-	nom : "BENALI",
+	nom : "JAMILA",
 	prenom : "FATIMA",
 	partipolitique : "Indépendant",
 	age: 60,
@@ -33,8 +33,8 @@ const candidats=[{
 },
 {
 	cin : "ij778899",
-	nom : "HOUSSAM",
-	prenom : "FASSA",
+	nom : "FASSA",
+	prenom : "HOUSSAM",
 	partipolitique : "wisdom",
 	age: 20,
 	electeurs: ["AB123456","EF112233","GH885566","7q559911","9u005599"]
@@ -117,39 +117,60 @@ for(let i=0;i<n;i++){
 ajouteruncandidat();
 }    
 }
-
 function afficher(){
     if(candidats.length==0){
         console.log("aucun candidat");
         return;
     }
-let choix=prompt("1.voir tout/2.trier par votes/3.filtrer par parti: ");
-if(choix=="2"){
-    for (let i=0;i<candidats.length;i++){
-    for (let j=0;j<candidats.length-1;j++){
-        if(candidats[j].electeurs.length<candidats[j+1].electeurs.length){
-let box=candidats[j];
-    candidats[j]=candidats[j+1];
-    candidats[j+1]=box;        
+    let choix=prompt("1.voir tout/2.trier par votes/3.filtrer par parti: ");
+    if(choix=="2"){
+        for(let i=0;i<candidats.length;i++){
+            for(let j=0;j<candidats.length-1;j++){
+                if(candidats[j].electeurs.length<candidats[j+1].electeurs.length){
+                    let box=candidats[j];
+                    candidats[j]=candidats[j+1];
+                    candidats[j+1]=box;
+                }
+            }
         }
-    }    
     }
-}
-let filtre="";
-if(choix=="3")filtre=prompt("donner le parti: ");
-for (let i=0;i<candidats.length;i++){
-    if(choix=="3"&&candidats[i].partipolitique!=filtre){
-   continue;
+    let filtre="";
+    if(choix=="3")filtre=prompt("donner le parti: ");
+
+    function colonne(texte,largeur){
+        let t=String(texte);
+        while(t.length<largeur){
+            t=t+" ";
+        }
+        return t;
     }
-console.log(candidats[i].cin + " |" + candidats[i].nom + " " + candidats[i].prenom + " |age: " + candidats[i].age + " | parti: " + candidats[i].partipolitique +"|votes: "+ candidats[i].electeurs.length);               
-}
+
+    let ligne="+------+------------+----------------+----------------+----------------+-------+--------+";
+    console.log("");
+    console.log(ligne);
+    console.log("\x1b[36m| "+colonne("N°",4)+" | "+colonne("CIN",10)+" | "+colonne("Nom",14)+" | "+colonne("Prenom",14)+" | "+colonne("Parti",14)+" | "+colonne("Age",5)+" | "+colonne("Votes",6)+" |\x1b[0m");
+    console.log(ligne);
+
+    let n=0;
+    for(let i=0;i<candidats.length;i++){
+        if(choix=="3"&&candidats[i].partipolitique!=filtre){
+            continue;
+        }
+        n++;
+        console.log("| "+colonne(n,4)+" | "+colonne(candidats[i].cin,10)+" | "+colonne(candidats[i].nom,14)+" | "+colonne(candidats[i].prenom,14)+" | "+colonne(candidats[i].partipolitique,14)+" | "+colonne(candidats[i].age,5)+" | "+colonne(candidats[i].electeurs.length,6)+" |");
+    }
+    if(n==0){
+        console.log("| aucun candidat trouve                                                            |");
+    }
+    console.log(ligne);
+    console.log(n+" candidat(s) affiche(s)");
 }
 function voter(){
 let cinelecteur=prompt("voter cin(electeur): ");
 for(let i = 0;i<candidats.length;i++){
     for(let j=0;j<candidats[i].electeurs.length;j++){
     if(candidats[i].electeurs[j]==cinelecteur){
-        console.log("vous avez deja vote et vous n'avez pasle droitn de modifier votre vote ni de voter a nouveau");
+        console.log("vous avez deja vote et vous n'avez pas le droitn de modifier votre vote ni de voter a nouveau");
         return;
     }    
     }
@@ -185,12 +206,24 @@ for (let i=0; i<candidats.length;i++){
 }    
 }
 function rechercher(){
-let nom=prompt("nom a chercher: ");
-for(let i=0;i<candidats.length;i++){
-if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
-    console.log(candidats[i]);
-}
-}
+    let nom=prompt("nom a chercher: ");
+    let trouve=false;
+    for(let i=0;i<candidats.length;i++){
+        if(candidats[i].nom.toLowerCase()==nom.toLowerCase()){
+            trouve=true;
+            console.log("");
+            console.log("CIN     : "+candidats[i].cin);
+            console.log("Nom     : "+candidats[i].nom);
+            console.log("Prenom  : "+candidats[i].prenom);
+            console.log("Parti   : "+candidats[i].partipolitique);
+            console.log("Age     : "+candidats[i].age);
+            console.log("Votes   : "+candidats[i].electeurs.length);
+            console.log("--------------------");
+        }
+    }
+    if(trouve==false){
+        console.log("aucun candidat trouve");
+    }
 }
 function statistique(){
     console.log("total candidat: " + candidats.length);
