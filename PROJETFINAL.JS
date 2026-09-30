@@ -137,32 +137,25 @@ function afficher(){
     let filtre="";
     if(choix=="3")filtre=prompt("donner le parti: ");
 
-    function colonne(texte,largeur){
-        let t=String(texte);
-        while(t.length<largeur){
-            t=t+" ";
-        }
-        return t;
-    }
-
-    let ligne="+------+------------+----------------+----------------+----------------+-------+--------+";
-    console.log("");
-    console.log(ligne);
-    console.log("\x1b[36m| "+colonne("N°",4)+" | "+colonne("CIN",10)+" | "+colonne("Nom",14)+" | "+colonne("Prenom",14)+" | "+colonne("Parti",14)+" | "+colonne("Age",5)+" | "+colonne("Votes",6)+" |\x1b[0m");
-    console.log(ligne);
-
     let n=0;
     for(let i=0;i<candidats.length;i++){
         if(choix=="3"&&candidats[i].partipolitique!=filtre){
             continue;
         }
         n++;
-        console.log("| "+colonne(n,4)+" | "+colonne(candidats[i].cin,10)+" | "+colonne(candidats[i].nom,14)+" | "+colonne(candidats[i].prenom,14)+" | "+colonne(candidats[i].partipolitique,14)+" | "+colonne(candidats[i].age,5)+" | "+colonne(candidats[i].electeurs.length,6)+" |");
+        console.log("");
+        console.log("----- Candidat " + n + " -----");
+        console.log("CIN     : " + candidats[i].cin);
+        console.log("Nom     : " + candidats[i].nom);
+        console.log("Prenom  : " + candidats[i].prenom);
+        console.log("Parti   : " + candidats[i].partipolitique);
+        console.log("Age     : " + candidats[i].age);
+        console.log("Votes   : " + candidats[i].electeurs.length);
     }
     if(n==0){
-        console.log("| aucun candidat trouve                                                            |");
+        console.log("aucun candidat trouve");
     }
-    console.log(ligne);
+    console.log("");
     console.log(n+" candidat(s) affiche(s)");
 }
 function voter(){
@@ -234,7 +227,18 @@ function statistique(){
     console.log("totalvotes: " + totalvotes);
 }
 while(true){
-    console.log("1.ajouter 2.plusieurs 3.afficher 4.voter 5.modifier 6.supprimer 7.rechercher 8.stats 9.quitter");
+    console.log("");
+    console.log("===== MENU =====");
+    console.log("1. ajouter");
+    console.log("2. ajouter plusieurs");
+    console.log("3. afficher");
+    console.log("4. voter");
+    console.log("5. modifier");
+    console.log("6. supprimer");
+    console.log("7. rechercher");
+    console.log("8. stats");
+    console.log("9. quitter");
+    console.log("================");
     let choix=prompt("choix: ");
     switch(choix){
         case "1":
